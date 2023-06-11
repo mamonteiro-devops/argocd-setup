@@ -1,15 +1,15 @@
-{{ if .Values.metrics_server.enabled }}
+{{ if .Values.kube_prometheus_stack.enabled }}
   apiVersion: argoproj.io/v1alpha1
   kind: Application
   metadata:
-    name: metrics-server
+    name: kube-prometheus-stack
     namespace: argocd
     labels:
       kn: "knite-1"
     annotations:
       argocd.argoproj.io/sync-wave: "3"
     finalizers:
-    - resources-finalizer.argocd.argoproj.io
+      - resources-finalizer.argocd.argoproj.io
   spec:
     destination:
       namespace: monitoring
@@ -17,7 +17,7 @@
     project: default
     source:
       path: .
-      repoURL: https://github.com/mamonteiro-devops/eks-metrics-server
+      repoURL: https://github.com/mamonteiro-devops/kube-prometheus-stack
       targetRevision: HEAD
     syncPolicy:
       automated:

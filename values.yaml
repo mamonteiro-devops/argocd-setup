@@ -25,3 +25,8 @@ serviceAccounts:
 
 metrics_server:
   enabled: true
+
+kube_prometheus_stack:
+  enabled: true
+
+
