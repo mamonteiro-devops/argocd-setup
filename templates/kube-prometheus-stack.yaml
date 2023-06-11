@@ -1,4 +1,4 @@
-{{ if .Values.kube_prometheus_stack.enabled }}
+#{{ if .Values.kube_prometheus_stack.enabled }}
   apiVersion: argoproj.io/v1alpha1
   kind: Application
   metadata:
@@ -12,7 +12,7 @@
       - resources-finalizer.argocd.argoproj.io
   spec:
     destination:
-      namespace: monitoring
+      namespace: prometheus-stack
       server: {{ .Values.dest_server }}
     project: default
     source:
@@ -25,4 +25,4 @@
         selfHeal: true
       syncOptions:
         - CreateNamespace=true
-{{ end }}
+#{{ end }}
